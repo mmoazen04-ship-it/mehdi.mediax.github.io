@@ -16,12 +16,13 @@ window.SITE = {
   email:     "",   // hello@yourname.com
   instagram: "https://www.instagram.com/mehdi.mediax",
   linkedin:  "",   // https://linkedin.com/in/yourname
-  tiktok:    "",   // https://www.tiktok.com/@yourname
+  tiktok:    "https://www.tiktok.com/@mehdi.mediax",
+  x:         "https://x.com/mehdimediax7",
   whatsapp:  "https://wa.me/12137617085?text=Hi%20Mehdi%2C%20I%27d%20like%20to%20talk%20about%20a%20project.",
   youtube:   "",   // https://youtube.com/@yourname
 
   // ---- Hero --------------------------------------------------------------
-  showreel:     "",   // link to your showreel (horizontal)
+  showreel:     "",   // link to your showreel (vertical 9:16, e.g. a YouTube Short)
   showreelLoop: "",   // optional: short silent .mp4 that loops in the hero
 
   // ---- Presentation ------------------------------------------------------
