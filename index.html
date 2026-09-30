@@ -1353,7 +1353,7 @@ const io = new IntersectionObserver(entries => entries.forEach(en => {
 function startObserving() {
   $$('.rv, [data-scramble], [data-count]').forEach(el => { if (!el.closest('.hero')) io.observe(el); });
   // clip-path hides .h-cut from IntersectionObserver, so watch a zero-height sentinel placed before it
-  $$('.h-cut').forEach(el => { const s = document.createElement('span'); s.setAttribute('aria-hidden', 'true'); s.style.cssText = 'display:block;height:1px;margin-bottom:-1px'; el.before(s); s._proxyFor = el; io.observe(s); });
+  $$('.h-cut, .film.rv').forEach(el => { const s = document.createElement('span'); s.setAttribute('aria-hidden', 'true'); s.style.cssText = 'display:block;height:1px;margin-bottom:-1px'; el.before(s); s._proxyFor = el; io.observe(s); });
 }
 
 /* ----------------------------------------------------------------- slate → hero */
