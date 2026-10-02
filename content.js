@@ -31,7 +31,7 @@ window.SITE = {
 
   // Chapter 01 · For businesses (3 vertical videos)
   chapter1: [
-    { link: "", title: "", client: "", note: "", cover: "" },
+    { link: "video/know-your-why.mp4", title: "Know Your Why", client: "", note: "Talking-head edit with kinetic captions, halftone B-roll and motion graphics.", cover: "video/know-your-why.jpg" },
     { link: "", title: "", client: "", note: "", cover: "" },
     { link: "", title: "", client: "", note: "", cover: "" },
   ],
