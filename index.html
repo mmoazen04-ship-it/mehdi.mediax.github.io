@@ -486,6 +486,19 @@ a.folder:hover .folder__arrow{background:var(--bone);color:var(--ink);border-col
 .quote.is-empty blockquote{color:var(--dim)}
 .quote.is-empty .quote__who b{color:var(--dim)}
 @media (max-width:900px){.quotes{grid-template-columns:1fr}.quote{min-height:0}}
+.clients{display:grid;gap:clamp(12px,1.6vw,20px)}
+.client{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(16px,2.4vw,36px);padding:clamp(18px,2.2vw,28px);border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,var(--ink-2),var(--ink) 80%);transition:border-color .5s}
+.client:hover{border-color:var(--line-2)}
+.client__av{width:clamp(64px,7vw,92px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--ink-3);display:grid;place-items:center;box-shadow:0 0 0 1px var(--line-2),0 0 40px -6px rgba(255,120,40,.35)}
+.client__av img{width:100%;height:100%;object-fit:cover}
+.client__av span{font-family:var(--f-mono);color:var(--bone-2)}
+.client__name{margin:0;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1;letter-spacing:-.03em;font-weight:520;font-variation-settings:"wdth" 88}
+.client__show{margin:.35rem 0 0;font-size:clamp(1.1rem,1.6vw,1.4rem);color:var(--tung)}
+.client__role{margin:.6rem 0 0;color:var(--mute)}
+.client__links{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-end}
+.client__links a{border:1px solid var(--line-2);border-radius:999px;padding:.55em 1em;font-size:.9rem;color:var(--bone-2);transition:background .35s,color .35s,border-color .35s}
+.client__links a:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+@media (max-width:700px){.client{grid-template-columns:auto 1fr}.client__links{grid-column:1/-1;justify-content:flex-start}}
 
 /* ==========================================================================
    Final CTA
@@ -905,8 +918,8 @@ main,.foot{position:relative;z-index:1}
     <div class="wrap">
       <header class="sec-head">
         <div class="sec-head__main">
-          <p class="kicker mono rv">Client feedback</p>
-          <h2 class="h2 h-cut">In their <span class="serif">words</span></h2>
+          <p class="kicker mono rv" id="feedbackKicker">Client feedback</p>
+          <h2 class="h2 h-cut" id="feedbackTitle">In their <span class="serif">words</span></h2>
         </div>
       </header>
       <div class="quotes" id="quotes"></div>
@@ -998,6 +1011,7 @@ const SITE = {
   portrait: C.photo || '',
   moreWork: (C.moreWork || []).slice(0, 3),
   testimonials: (C.testimonials || []).filter(t => t && t.quote),
+  clients: (C.clients || []).filter(x => x && x.name),
 };
 
 
@@ -1143,12 +1157,27 @@ document.addEventListener('click', e => {
 });
 
 /* testimonials */
-if (!SITE.testimonials.length) { const sec = $('#feedback'); sec && sec.remove(); }
-else $('#quotes').innerHTML = SITE.testimonials.map((q, i) => `<figure class="quote rv" style="--d:${i * 120};margin:0">
+if (!SITE.testimonials.length && !SITE.clients.length) { const sec = $('#feedback'); sec && sec.remove(); }
+else if (SITE.testimonials.length) $('#quotes').innerHTML = SITE.testimonials.map((q, i) => `<figure class="quote rv" style="--d:${i * 120};margin:0">
     <blockquote>${esc(q.quote)}</blockquote>
     <footer><span class="quote__av">${q.avatar ? `<img src="${esc(q.avatar)}" alt="">` : ''}</span>
       <span class="quote__who"><b>${esc(q.name || '')}</b><span class="mono">${esc(q.role || '')}</span></span></footer>
   </figure>`).join('');
+else {
+  $('#feedbackKicker').textContent = 'Clients';
+  $('#feedbackTitle').innerHTML = 'Worked <span class="serif">with</span>';
+  const q = $('#quotes'); q.className = 'clients';
+  q.innerHTML = SITE.clients.map((x, i) => {
+    const ini = x.name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    const links = [['youtube', 'YouTube'], ['instagram', 'Instagram'], ['website', 'Website']]
+      .filter(([k]) => x[k]).map(([k, n]) => `<a href="${esc(x[k])}" target="_blank" rel="noopener">${n} <span aria-hidden="true">↗</span></a>`).join('');
+    return `<article class="client rv" style="--d:${i * 120}">
+      <div class="client__av">${x.photo ? `<img src="${esc(x.photo)}" alt="${esc(x.name)}" loading="lazy">` : `<span>${esc(ini)}</span>`}</div>
+      <div class="client__id"><h3 class="client__name">${esc(x.name)}</h3>${x.show ? `<p class="client__show serif">${esc(x.show)}</p>` : ''}${x.role ? `<p class="client__role mono">${esc(x.role)}</p>` : ''}</div>
+      <div class="client__links">${links}</div>
+    </article>`;
+  }).join('');
+}
 
 /* ----------------------------------------------------------------- showreel */
 const reel = SITE.showreel;
