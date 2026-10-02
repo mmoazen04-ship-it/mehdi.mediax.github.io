@@ -31,14 +31,14 @@ window.SITE = {
 
   // Chapter 01 · For businesses (3 vertical videos)
   chapter1: [
-    { link: "video/know-your-why.mp4", title: "Know Your Why", client: "", note: "Talking-head edit with kinetic captions, halftone B-roll and motion graphics.", cover: "video/know-your-why.jpg" },
+    { link: "", title: "", client: "", note: "", cover: "" },
     { link: "", title: "", client: "", note: "", cover: "" },
     { link: "", title: "", client: "", note: "", cover: "" },
   ],
 
   // Chapter 02 · For podcasters (3 vertical videos)
   chapter2: [
-    { link: "", title: "", client: "", note: "", cover: "" },
+    { link: "video/know-your-why.mp4", title: "Know Your Why", client: "Jon Orsini · Mindfulness Unscripted", note: "Podcast clip with kinetic captions, halftone B-roll and motion graphics.", cover: "video/know-your-why.jpg" },
     { link: "", title: "", client: "", note: "", cover: "" },
     { link: "", title: "", client: "", note: "", cover: "" },
   ],
@@ -49,6 +49,14 @@ window.SITE = {
     { link: "", title: "Business videos", note: "Talking-head videos for product and service brands" },
     { link: "", title: "Podcast clips",   note: "Short clips cut from full episodes" },
     { link: "", title: "All edits",       note: "The complete library" },
+  ],
+
+  // ---- Clients ("Worked with") ------------------------------------------
+  clients: [
+    { name: "Jon Orsini", show: "Mindfulness Unscripted", role: "Podcast host · Meditation teacher",
+      photo: "video/jon-orsini.jpg",
+      youtube: "https://www.youtube.com/channel/UCY6uEEBVRRrIvMaPMWlljrw",
+      instagram: "https://www.instagram.com/jonorsini/" },
   ],
 
   // ---- Client feedback ---------------------------------------------------
