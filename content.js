@@ -32,7 +32,7 @@ window.SITE = {
   // Chapter 01 · For businesses (3 vertical videos)
   chapter1: [
     { link: "", title: "", client: "", note: "", cover: "" },
-    { link: "", title: "", client: "", note: "", cover: "" },
+    { link: "video/sleepwalking.mp4", title: "Sleepwalking", client: "", note: "Talking-head edit with cinematic B-roll, kinetic typography and motion graphics.", cover: "video/sleepwalking.jpg" },
     { link: "", title: "", client: "", note: "", cover: "" },
   ],
 
