@@ -22,8 +22,9 @@ window.SITE = {
   youtube:   "",   // https://youtube.com/@yourname
 
   // ---- Hero --------------------------------------------------------------
-  showreel:     "",   // link to your showreel (vertical 9:16, e.g. a YouTube Short)
-  showreelLoop: "",   // optional: short silent .mp4 that loops in the hero
+  showreel:     "video/mehdi-intro.mp4",   // link to your showreel (vertical 9:16, e.g. a YouTube Short)
+  showreelLoop: "video/mehdi-intro.mp4",   // optional: silent .mp4 that loops in the hero
+  showreelCover: "video/mehdi-intro.jpg",  // still image shown before the video loads
 
   // ---- Presentation ------------------------------------------------------
   intro: "",          // link to the horizontal video where you talk to camera
