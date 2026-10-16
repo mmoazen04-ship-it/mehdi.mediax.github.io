@@ -1002,7 +1002,7 @@ const SITE = {
     tiktok:    { url: C.tiktok || '',    handle: handleOf(C.tiktok, 'TikTok') },
     x:         { url: C.x || '',         handle: handleOf(C.x, 'X') },
   },
-  showreel: { url: C.showreel || '', preview: C.showreelLoop || '', poster: '' },
+  showreel: { url: C.showreel || '', preview: C.showreelLoop || '', poster: C.showreelCover || '' },
   intro: { url: C.intro || '', preview: '', poster: '' },
   chapters: [
     { works: (C.chapter1 || []).map(w => work(w, 'Business')) },
