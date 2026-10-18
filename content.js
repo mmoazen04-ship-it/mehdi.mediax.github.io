@@ -33,7 +33,7 @@ window.SITE = {
   // Chapter 01 · For businesses (3 vertical videos)
   chapter1: [
     { link: "", title: "", client: "", note: "", cover: "" },
-    { link: "video/sleepwalking.mp4", title: "Sleepwalking", client: "", note: "Talking-head edit with cinematic B-roll, kinetic typography and motion graphics.", cover: "video/sleepwalking.jpg" },
+    { link: "video/curodont-repair.mp4", title: "Curodont Repair", client: "", note: "Product explainer with metallic titles, 3D icons and a cinematic grade.", cover: "video/curodont-repair.jpg" },
     { link: "", title: "", client: "", note: "", cover: "" },
   ],
 
@@ -41,7 +41,7 @@ window.SITE = {
   chapter2: [
     { link: "video/know-your-why.mp4", title: "Know Your Why", client: "Jon Orsini · Mindfulness Unscripted", note: "Podcast clip with kinetic captions, halftone B-roll and motion graphics.", cover: "video/know-your-why.jpg" },
     { link: "", title: "", client: "", note: "", cover: "" },
-    { link: "", title: "", client: "", note: "", cover: "" },
+    { link: "video/sleepwalking.mp4", title: "Sleepwalking", client: "", note: "Talking-head edit with cinematic B-roll, kinetic typography and motion graphics.", cover: "video/sleepwalking.jpg" },
   ],
 
   // ---- More work (Google Drive folders) --------------------------------
