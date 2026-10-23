@@ -32,7 +32,7 @@ window.SITE = {
 
   // Chapter 01 · For businesses (3 vertical videos)
   chapter1: [
-    { link: "", title: "", client: "", note: "", cover: "" },
+    { link: "video/seasonal-business.mp4", title: "Seasonal Business", client: "", note: "Talking-head edit with split-screen B-roll, editorial captions and motion graphics.", cover: "video/seasonal-business.jpg" },
     { link: "video/curodont-repair.mp4", title: "Curodont Repair", client: "", note: "Product explainer with metallic titles, 3D icons and a cinematic grade.", cover: "video/curodont-repair.jpg" },
     { link: "", title: "", client: "", note: "", cover: "" },
   ],
