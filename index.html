@@ -466,6 +466,22 @@ a.folder:hover .folder__arrow{background:var(--bone);color:var(--ink);border-col
 .about__text{grid-column:7/-1;display:grid;gap:1.4rem;align-content:start;padding-top:clamp(0px,4vw,60px)}
 .about__text p{margin:0;color:var(--bone-2);font-size:1.06rem;max-width:52ch}
 .about__text p.big{font-size:var(--t-lead);color:var(--bone)}
+.about--noimg .about__text{grid-column:1/-1;grid-template-columns:5fr 7fr;column-gap:clamp(24px,4vw,72px);grid-auto-flow:row dense;padding-top:0}
+.about--noimg .about__text>*{grid-column:2}
+.about--noimg .about__text>.stats{grid-column:2;max-width:560px}
+.about--noimg .about__text>.kicker{grid-column:1;grid-row:1}
+.about--noimg .about__text>.h2{grid-column:1;grid-row:2/span 3;align-self:start}
+@media (max-width:860px){.about--noimg .about__text{grid-template-columns:1fr}.about--noimg .about__text>*{grid-column:1!important;grid-row:auto!important}}
+.clip--v1{z-index:1}
+.clip--dim{z-index:0!important;background:repeating-linear-gradient(135deg,rgba(236,232,224,.07) 0 6px,rgba(236,232,224,.03) 6px 12px);border:1px dashed var(--line-2)}
+.mk{position:absolute;top:22%;bottom:22%;width:2px;margin-left:-1px;background:var(--tung);border-radius:2px;transition:opacity .5s,transform .5s;box-shadow:0 0 10px var(--tung)}
+.mk::after{content:"";position:absolute;top:-4px;left:-3px;width:8px;height:8px;border-radius:50%;background:var(--tung)}
+.ret{position:absolute;left:0;top:0;width:100%;height:100%;z-index:8;pointer-events:none;opacity:0;clip-path:inset(0 100% 0 0);transition:opacity .4s,clip-path 1.4s var(--ease)}
+.ret path{fill:none;stroke:var(--tung);stroke-width:2;vector-effect:non-scaling-stroke;}
+.ret .fill{fill:rgba(255,140,60,.08);stroke:none}
+.nle.learn .ret{opacity:1;clip-path:inset(0 0 0 0)}.nle.learn .lane{opacity:.32;transition:opacity .6s}.lane{transition:opacity .6s}
+.ret__lbl{position:absolute;right:6%;top:30%;z-index:9;color:var(--tung);font-size:10px;opacity:0;transition:opacity .5s .6s;background:#0F1113;padding:2px 6px;border:1px solid var(--tung);border-radius:4px}
+.nle.learn .ret__lbl{opacity:1}
 .about__sign{font-size:1.9rem;color:var(--bone)}
 @media (max-width:860px){.portrait{grid-column:1/-1;max-width:480px}.about__text{grid-column:1/-1}}
 
@@ -689,13 +705,13 @@ main,.foot{position:relative;z-index:1}
       </div>
 
       <div class="reel" id="reel">
-        <div class="reel__frame" id="reelFrame" data-cursor="Play reel" role="button" tabindex="0" aria-label="Play showreel">
+        <div class="reel__frame" id="reelFrame" data-cursor="Play" role="button" tabindex="0" aria-label="Play showreel">
           <div class="reel__media" id="reelMedia"></div>
           <div class="reel__hud mono" id="reelHud">
             <span><span class="rec" aria-hidden="true"></span> Showreel 2026</span>
                       <span id="reelTc">00:00:00:00</span>
           </div>
-          <div class="reel__play mono"><i aria-hidden="true"></i><span>Play reel</span></div>
+          <div class="reel__play mono"><i aria-hidden="true"></i><span>Play</span></div>
           <div class="reel__scrub" id="reelScrub" aria-hidden="true"><b></b><i></i></div>
         </div>
     </div>
@@ -768,20 +784,6 @@ main,.foot{position:relative;z-index:1}
         </div>
         <div class="cards" data-chapter="1"></div>
         <p class="swipe-hint mono">Swipe <span aria-hidden="true">→</span></p>
-      </div>
-    </div>
-
-    <!-- More work: Google Drive folders -->
-    <div class="more" id="more-work" data-seq="More work">
-      <div class="wrap">
-        <div class="more__head">
-          <div>
-            <p class="kicker mono rv">The full library</p>
-            <h3 class="h2 h-cut">Want to see <span class="serif">more?</span></h3>
-          </div>
-          <p class="body rv">The six edits above are a selection. Each folder holds more finished videos in full quality.</p>
-        </div>
-        <ul class="folders" id="folders"></ul>
       </div>
     </div>
 
@@ -900,8 +902,8 @@ main,.foot{position:relative;z-index:1}
     <div class="wrap about__grid">
       <figure class="portrait" id="portrait" data-slot="portrait"></figure>
       <div class="about__text">
-        <p class="kicker mono rv">About</p>
-        <h2 class="h2 h-cut">Behind <span class="serif">the work</span></h2>
+        <p class="kicker mono rv">Approach</p>
+        <h2 class="h2 h-cut">How I <span class="serif">think</span></h2>
         <p class="big rv">I’m Mehdi Moazen. I direct and edit short-form content for businesses and podcasters.</p>
         <p class="rv">My work sits between strategy and craft. I decide what a video should say and who it’s for, then make sure the edit delivers it: the hook, the rhythm and the moment someone decides to keep watching.</p>
         <p class="rv">Today I lead projects end to end, from the first conversation to the final export, with a small team of editors and a modern, AI-assisted workflow. You get one point of contact and videos that look sharp, stay on-brand and feel unmistakably yours.</p>
@@ -1111,6 +1113,7 @@ $$('.slot--live').forEach(s => {
 /* portrait */
 (() => {
   const el = $('#portrait');
+  if (!SITE.portrait) { el.closest('.about__grid').classList.add('about--noimg'); el.remove(); return; }
   el.innerHTML = SITE.portrait
     ? `<img src="${esc(SITE.portrait)}" alt="Portrait of Mehdi Moazen" loading="lazy">`
     : `<div class="slot slot--empty"><span class="slot__crop tl"></span><span class="slot__crop tr"></span><span class="slot__crop bl"></span><span class="slot__crop br"></span><div class="slot__center"><span class="slot__cross"></span><span class="mono" style="margin-top:60px">Portrait · 4:5</span></div></div>`;
@@ -1429,7 +1432,7 @@ addScrub(kara, { a: 0.88, b: 0.5, h: 1 }, p => {
   const n = Math.floor(p * (kws.length + 1));
   kws.forEach((w, i) => { w.classList.toggle('on', i < n); w.classList.toggle('now', i === n - 1 && p < 1); });
 });
-addScrub($('#portrait'), { a: 1, b: 0, h: 1 }, p => $('#portrait').style.setProperty('--p', p.toFixed(3)));
+$('#portrait') && addScrub($('#portrait'), { a: 1, b: 0, h: 1 }, p => $('#portrait').style.setProperty('--p', p.toFixed(3)));
 
 function update() {
   ticking = false;
@@ -1481,9 +1484,10 @@ const L = { T1: $('#laneT1'), V2: $('#laneV2'), V1: $('#laneV1'), A2: $('#laneA2
 const mk = (lane, cls) => { const d = document.createElement('div'); d.className = 'clip ' + cls; lane.appendChild(d); return d; };
 const pacing = (() => { const a = [[0, 8, 'Hook', 'hi']]; let x = 8.3; [7, 5.4, 7.2, 5.2, 6.6, 5, 6.4, 5.6, 6.8, 5.4, 6].forEach(w => { a.push([x, w, '', '']); x += w + 0.3; }); return a; })();
 const V1S = [
-  [[0, 10, 'Hook', 'hi'], [10.4, 85.6, 'Raw footage', 'raw']],
+  [[0, 96, 'Raw footage', 'raw']],
+  [[82, 8, 'Hook', 'hi'], [14, 13, 'Setup', ''], [38, 14, 'Turn', ''], [60, 11, 'Payoff', ''], [0, 96, '', 'dim']],
   [[0, 10, 'Hook', 'hi'], [10.4, 24, 'Setup', ''], [34.8, 28, 'Turn', ''], [63.2, 22, 'Payoff', '']],
-  pacing, pacing, pacing, pacing,
+  pacing, pacing, pacing,
 ];
 const v1 = Array.from({ length: 12 }, () => mk(L.V1, 'clip--v1'));
 const V2 = [[12, 8, 'B-roll'], [30, 6, 'GFX'], [47, 9, 'B-roll'], [65, 6, 'GFX']].map(c => { const d = mk(L.V2, 'clip--v2'); d.textContent = c[2]; d._c = c; return d; });
@@ -1492,9 +1496,12 @@ const music = mk(L.A2, 'clip--a2'); music.textContent = 'Music bed';
 const sfx = [8.3, 21, 34.2, 45.8, 58.4, 70.4].map(x => { const d = mk(L.A2, 'clip--sfx'); d._x = x; return d; });
 const waveEl = $("#wave");
 waveEl.innerHTML = Array.from({ length: 90 }, (_, i) => `<i style="height:${(18 + Math.abs(Math.sin(i * 1.7) * 55) + ((i * 37) % 23)).toFixed(0)}%"></i>`).join('');
-const PH = [5, 42, 58, 30, 52, 78];
+const MK = [16, 41, 63, 85].map(x => { const d = mk(L.T1, 'mk'); d.className = 'mk'; d.style.left = x + '%'; return d; });
+const lanesEl = $('#nleLanes');
+lanesEl.insertAdjacentHTML('beforeend', '<svg class="ret" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="fill" d="M0 8 C10 10 14 22 24 26 S44 30 54 34 S78 38 96 40 L96 100 L0 100Z"/><path pathLength="1" d="M0 8 C10 10 14 22 24 26 S44 30 54 34 S78 38 96 40"/></svg><span class="ret__lbl">Retention 71%</span>');
+const PH = [30, 85, 3, 42, 58, 96];
 const NAMES = ['Listen', 'Angle', 'Hook', 'Rhythm', 'Craft', 'Learn'];
-const NOTES = ['Raw footage · 14:32', 'Angle · 1 idea · 3 beats', 'Hook · first 1.5s', 'Tightened · 12 cuts', 'Captions · GFX · Sound', 'Published · Retention reviewed'];
+const NOTES = ['Raw footage · 14:32 · 4 moments flagged', 'Angle · 1 idea · 3 beats', 'Hook moved to 0:00', 'Tightened · 12 cuts', 'Captions · GFX · Sound', 'Retention reviewed · Into the next video'];
 let curStep = -1, tcShown = 0, tcRaf = 0;
 function setStep(s) {
   if (s === curStep) return; curStep = s;
@@ -1509,7 +1516,9 @@ function setStep(s) {
   T1.forEach(d => { d.style.left = d._c[0] + '%'; d.style.width = s >= 4 ? d._c[1] + '%' : '0%'; d.style.opacity = s >= 4 ? 1 : 0; });
   music.style.left = '0%'; music.style.width = s >= 4 ? '78%' : '0%'; music.style.opacity = s >= 4 ? 1 : 0;
   sfx.forEach(d => { d.style.left = d._x + '%'; d.style.opacity = s >= 4 ? 1 : 0; });
-  waveEl.style.width = s < 2 ? '96%' : '78%'; waveEl.style.opacity = s >= 4 ? 1 : 0.3;
+  waveEl.style.width = s < 2 ? '96%' : '78%'; waveEl.style.opacity = s === 0 || s >= 4 ? 1 : 0.3;
+  MK.forEach(d => { d.style.opacity = s <= 1 ? 1 : 0; d.style.transform = s <= 1 ? 'scaleY(1)' : 'scaleY(0)'; });
+  nle.classList.toggle('learn', s === 5);
   nle.classList.toggle('graded', s >= 5);
   $('#nlePh').style.left = PH[s] + '%';
   $('#nleStep').textContent = pad(s + 1) + ' ' + NAMES[s];
