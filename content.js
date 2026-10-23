@@ -27,7 +27,7 @@ window.SITE = {
   showreelCover: "video/mehdi-intro.jpg",  // still image shown before the video loads
 
   // ---- Presentation ------------------------------------------------------
-  intro: "",          // link to the horizontal video where you talk to camera
+  intro: "",          // optional: horizontal intro video. Hidden while empty, appears automatically when filled
   photo: "",          // your portrait for the About section, e.g. "images/me.jpg"
 
   // Chapter 01 · For businesses (3 vertical videos)
@@ -54,10 +54,6 @@ window.SITE = {
 
   // ---- Clients ("Worked with") ------------------------------------------
   clients: [
-    { name: "Jon Orsini", show: "Mindfulness Unscripted", role: "Podcast host · Meditation teacher",
-      photo: "video/jon-orsini.jpg",
-      youtube: "https://www.youtube.com/channel/UCY6uEEBVRRrIvMaPMWlljrw",
-      instagram: "https://www.instagram.com/jonorsini/" },
   ],
 
   // ---- Client feedback ---------------------------------------------------
