@@ -34,13 +34,13 @@ window.SITE = {
   chapter1: [
     { link: "video/seasonal-business.mp4", title: "Seasonal Business", client: "", note: "Talking-head edit with split-screen B-roll, editorial captions and motion graphics.", cover: "video/seasonal-business.jpg" },
     { link: "video/curodont-repair.mp4", title: "Curodont Repair", client: "", note: "Product explainer with metallic titles, 3D icons and a cinematic grade.", cover: "video/curodont-repair.jpg" },
-    { link: "", title: "", client: "", note: "", cover: "" },
+    { link: "video/htc-earbuds.mp4", title: "HTC Smart Earbuds", client: "", note: "UGC product ad with gold editorial titles, glass UI pills and the product placed in cinematic scenes.", cover: "video/htc-earbuds.jpg" },
   ],
 
   // Chapter 02 · For podcasters (3 vertical videos)
   chapter2: [
     { link: "video/know-your-why.mp4", title: "Know Your Why", client: "Jon Orsini · Mindfulness Unscripted", note: "Podcast clip with kinetic captions, halftone B-roll and motion graphics.", cover: "video/know-your-why.jpg" },
-    { link: "", title: "", client: "", note: "", cover: "" },
+    { link: "video/the-collapse.mp4", title: "The Collapse", client: "", note: "Market commentary with bold kinetic captions and archival B-roll.", cover: "video/the-collapse.jpg" },
     { link: "video/sleepwalking.mp4", title: "Sleepwalking", client: "", note: "Talking-head edit with cinematic B-roll, kinetic typography and motion graphics.", cover: "video/sleepwalking.jpg" },
   ],
 
