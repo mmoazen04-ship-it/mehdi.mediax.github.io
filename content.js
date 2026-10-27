@@ -13,7 +13,7 @@
 window.SITE = {
 
   // ---- Contact -----------------------------------------------------------
-  email:     "",   // hello@yourname.com
+  email:     "mmoazen04@gmail.com",
   instagram: "https://www.instagram.com/mehdi.mediax",
   linkedin:  "",   // https://linkedin.com/in/yourname
   tiktok:    "https://www.tiktok.com/@mehdi.mediax",
