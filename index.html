@@ -916,19 +916,6 @@ main,.foot{position:relative;z-index:1}
     </div>
   </section>
 
-  <!-- ============================== TESTIMONIALS ============================== -->
-  <section class="sec" id="feedback" data-seq="Feedback" style="padding-top:clamp(40px,6vw,90px)">
-    <div class="wrap">
-      <header class="sec-head">
-        <div class="sec-head__main">
-          <p class="kicker mono rv" id="feedbackKicker">Client feedback</p>
-          <h2 class="h2 h-cut" id="feedbackTitle">In their <span class="serif">words</span></h2>
-        </div>
-      </header>
-      <div class="quotes" id="quotes"></div>
-    </div>
-  </section>
-
   <!-- ============================== FINAL CTA ============================== -->
   <section class="final" id="contact" data-seq="Start a project">
     <div class="final__glow" aria-hidden="true"></div>
@@ -1125,9 +1112,9 @@ const contactRows = () => {
   rows.push(SITE.email
     ? `<li><button type="button" data-copy="${esc(SITE.email)}"><span class="c-lbl mono">Email</span><span class="c-val">${esc(SITE.email)}</span></button></li>`
     : `<li><span class="c-empty"><span class="c-lbl mono">Email</span><span class="c-val">Coming soon</span></span></li>`);
-  [['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['x', 'X'], ['linkedin', 'LinkedIn'], ['whatsapp', 'WhatsApp']].forEach(([k, name]) => {
+  [['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['x', 'X'], ['whatsapp', 'WhatsApp']].forEach(([k, name]) => {
     const l = L[k] || {};
-    rows.push(l.url
+    if (l.url) rows.push(l.url
       ? `<li><a href="${esc(l.url)}" target="_blank" rel="noopener"><span class="c-lbl mono">${name}</span><span class="c-val">${esc(l.handle || name)} ↗</span></a></li>`
       : `<li><span class="c-empty"><span class="c-lbl mono">${name}</span><span class="c-val">Coming soon</span></span></li>`);
   });
@@ -1137,9 +1124,9 @@ $('#contactsSign').innerHTML = contactRows();
 $('#footLinks').innerHTML = (() => {
   const L = SITE.links, out = [];
   out.push(SITE.email ? `<li><button type="button" data-copy="${esc(SITE.email)}" style="color:var(--bone-2)">${esc(SITE.email)}</button></li>` : `<li class="dim">Email · coming soon</li>`);
-  [['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['x', 'X'], ['linkedin', 'LinkedIn'], ['youtube', 'YouTube']].forEach(([k, n]) => {
+  [['instagram', 'Instagram'], ['tiktok', 'TikTok'], ['x', 'X'], ['youtube', 'YouTube']].forEach(([k, n]) => {
     const l = L[k] || {};
-    out.push(l.url ? `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${n} ↗</a></li>` : `<li class="dim">${n}</li>`);
+    if (l.url) out.push(`<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${n} ↗</a></li>`);
   });
   return out.join('');
 })();
